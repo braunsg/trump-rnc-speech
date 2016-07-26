@@ -216,6 +216,23 @@ The repository is openly distributed via an MIT permissive license.
 			text-decoration: underline;
 		}
 		
+		.loading {
+			font-family: "Crimson Text", serif;
+			width: 100%;
+			height: 100%;
+			padding: 5px 25px 5px 25px;
+			text-align:center;
+			vertical-align: center;
+			margin: 0px;
+			text-transform: lowercase;
+			font-variant: small-caps;
+			font-size: 2.0em;
+			letter-spacing: 2px;
+			box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+		
+		}
 	</style>
 	
 	<script>
@@ -247,6 +264,9 @@ The repository is openly distributed via an MIT permissive license.
 		// Loading three data sets at once; wait to complete page structure until all data is loaded
 		$.when($.getJSON("data/cheer_data.json"),$.getJSON("data/aggregated_data_cleaned.json"),$.getJSON("data/aggregated_signals_2s.json")).done(function(cheers_response,data_detail_response,data_aggregate_response) {
 
+			// Clear contents of containers ("loading...")
+			$(".loading").remove();
+			
 			// Capture loaded data
 			data_aggregate = data_aggregate_response[0];
 			data_detail = data_detail_response[0];
@@ -966,7 +986,7 @@ The repository is openly distributed via an MIT permissive license.
 	<div id="header">
 		<div id="title">Do You Hear That?<br>It's Trump's America</div>
 	</div>
-	<div id="vis_container"></div>
+	<div id="vis_container"><div class="loading">Loading...<br><img src="loading.gif"></div></div>
 	<div id="subvis_container"></div>
 	<div id="search_container">
 		<div class="search_category" id="theme_header"><b>THEMES</b></div>
